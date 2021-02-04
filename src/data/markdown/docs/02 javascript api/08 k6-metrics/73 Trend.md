@@ -15,7 +15,7 @@ _Trend_ is an object for representing a custom metric that allows for calculatin
 
 ## Trend usage in Thresholds
 
-When `Trend` is used in a threshold expression, there are a range of variables that can be used.
+When `Trend` is used in a [threshold expression](/using-k6/thresholds), there are a range of variables that can be used.
 
 - `avg` for average
 - `min` for minimum
@@ -42,7 +42,7 @@ The unit of these variables and functions are all in milliseconds.
 
 <CodeGroup labels={["Simple example"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Trend } from 'k6/metrics';
 
 var myTrend = new Trend('my_trend');
@@ -57,7 +57,7 @@ export default function() {
 
 <CodeGroup labels={["Usage in Thresholds"]} lineNumbers={[true]}>
 
-```javaScript
+```javascript
 import { Trend } from 'k6/metrics';
 import { sleep } from 'k6';
 import http from 'k6/http';
