@@ -95,6 +95,14 @@ $ k6 run --summary-trend-stats="min,avg,med,p(99),p(99.9),max,count" --summary-t
 
 </CodeGroup>
 
+### Summary export
+
+Additionally, the `k6 run` command can export the end-of-test summary report to a JSON file that includes all of the data above. This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
+
+This was first possible in k6 v0.26.0 with the [`--summary-export` flag](/using-k6/options#summary-export), though its use is now discouraged (see why [here](/results-visualization/end-of-test-summary#summary-export-to-a-json-file)).
+
+Instead, starting with k6 v0.30.0, the use of the [`handleSummary()` callback](/results-visualization/end-of-test-summary#handlesummary-callback) is recommended, since it allows completely customizing the end-of-test summary and exporting the summary report data in any desired format (e.g. JSON, CSV, XML (JUnit/xUnit/etc.), HTML, TXT, etc.).
+
 ## External outputs
 
 If the aggregated [end-of-test summary](/results-visualization/end-of-test-summary) is insufficient, k6 can send more granular result data to different external outputs, to integrate and visualize k6 metrics on other platforms.
@@ -126,19 +134,3 @@ $ k6 run \
 ```
 
 </CodeGroup>
-
-## Summary export
-
-Additionally, the `k6 run` command can export the end-of-test summary report to a JSON file that includes data for all test metrics, checks and thresholds.
-
-This is useful to get the aggregated test results in a machine-readable format, for integration with dashboards, external alerts, etc.
-
-<CodeGroup labels={[]}>
-
-```bash
-$ k6 run --summary-export=export.json script.js
-```
-
-</CodeGroup>
-
-> Read more about the summary on the [JSON plugin documentation](/results-visualization/json#summary-export)
